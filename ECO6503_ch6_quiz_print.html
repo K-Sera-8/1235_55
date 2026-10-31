@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ECO6503 Ch.6 — แบบฝึกหัดอัตนัย 20 ข้อ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: #111;
+    background: #f0f0f0;
+  }
+
+  /* ---- SCREEN WRAPPER ---- */
+  .page-wrap {
+    width: 210mm;
+    margin: 16px auto;
+    background: #fff;
+    padding: 14mm 14mm 14mm 14mm;
+    box-shadow: 0 2px 16px rgba(0,0,0,.15);
+  }
+
+  /* ---- HEADER ---- */
+  .doc-header {
+    border-bottom: 2px solid #111;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .doc-header h1 { font-size: 13pt; font-weight: 700; line-height: 1.3; }
+  .doc-header .sub { font-size: 8.5pt; color: #555; margin-top: 2px; }
+  .doc-header .right { text-align: right; font-size: 8pt; color: #666; }
+
+  /* ---- LEGEND ---- */
+  .legend {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 8px;
+    padding: 4px 8px;
+    background: #f8f8f8;
+    border-radius: 4px;
+    border: 0.5px solid #ddd;
+  }
+  .legend-item { display: flex; align-items: center; gap: 4px; font-size: 7.5pt; color: #444; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---- TWO COLUMN LAYOUT ---- */
+  .cols {
+    columns: 2;
+    column-gap: 10mm;
+    column-fill: balance;
+  }
+
+  /* ---- QUESTION CARD ---- */
+  .qcard {
+    break-inside: avoid;
+    margin-bottom: 7px;
+    border: 0.75px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .qcard .qhead {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+    padding: 5px 7px;
+    background: #fafafa;
+    border-bottom: 0.5px solid #e8e8e8;
+  }
+  .qnum {
+    min-width: 20px; height: 20px;
+    border-radius: 50%;
+    font-size: 8pt; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; flex-shrink: 0;
+  }
+  .qtxt { font-size: 9pt; font-weight: 600; color: #111; flex: 1; line-height: 1.5; }
+  .qtag {
+    font-size: 7pt; font-weight: 700;
+    padding: 1px 6px; border-radius: 10px;
+    flex-shrink: 0; margin-top: 2px;
+    white-space: nowrap;
+  }
+  .qcard .qans {
+    padding: 5px 7px 5px 33px;
+    background: #fff;
+  }
+  .ans-lbl {
+    font-size: 7pt; font-weight: 700; color: #888;
+    text-transform: uppercase; letter-spacing: .06em;
+    margin-bottom: 2px;
+  }
+  .ans-txt {
+    font-size: 9pt; color: #333; line-height: 1.6;
+  }
+  .ans-txt strong { color: #111; font-weight: 700; }
+  .ans-txt code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt;
+    background: #f3f3f3;
+    padding: 0 3px;
+    border-radius: 2px;
+    color: #333;
+  }
+
+  /* ---- CATEGORY COLORS ---- */
+  .c0 { background: #534AB7; } .t0 { background: #EEEDFE; color: #3C3489; }
+  .c1 { background: #0F6E56; } .t1 { background: #E1F5EE; color: #085041; }
+  .c2 { background: #993C1D; } .t2 { background: #FAECE7; color: #712B13; }
+  .c3 { background: #185FA5; } .t3 { background: #E6F1FB; color: #0C447C; }
+  .c4 { background: #854F0B; } .t4 { background: #FAEEDA; color: #633806; }
+  .c5 { background: #A32D2D; } .t5 { background: #FCEBEB; color: #791F1F; }
+
+  /* left accent bar per category */
+  .qcard.cat0 { border-left: 3px solid #534AB7; }
+  .qcard.cat1 { border-left: 3px solid #0F6E56; }
+  .qcard.cat2 { border-left: 3px solid #993C1D; }
+  .qcard.cat3 { border-left: 3px solid #185FA5; }
+  .qcard.cat4 { border-left: 3px solid #854F0B; }
+  .qcard.cat5 { border-left: 3px solid #A32D2D; }
+
+  .footer {
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 0.5px solid #ccc;
+    font-size: 7.5pt;
+    color: #888;
+    text-align: center;
+  }
+
+  /* ---- PRINT MEDIA ---- */
+  @media print {
+    body { background: #fff; font-size: 10pt; }
+    .page-wrap {
+      width: 100%; margin: 0; padding: 10mm 12mm 10mm 12mm;
+      box-shadow: none;
+    }
+    .qcard { break-inside: avoid; }
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div>
+      <h1>ECO6503 — แบบฝึกหัดอัตนัย Chapter 6</h1>
+      <div class="sub">Causal Inference: Endogeneity &amp; Instrumental Variables (IV/2SLS) · 20 ข้อ พร้อมเฉลย</div>
+    </div>
+    <div class="right">Wonlope Khumpradith<br>Week 03 · ECO6503</div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="dot" style="background:#534AB7"></div>Endogeneity (1–4)</div>
+    <div class="legend-item"><div class="dot" style="background:#0F6E56"></div>Measurement Error (5–7)</div>
+    <div class="legend-item"><div class="dot" style="background:#993C1D"></div>Consequences (8–10)</div>
+    <div class="legend-item"><div class="dot" style="background:#185FA5"></div>DAG &amp; ID (11–14)</div>
+    <div class="legend-item"><div class="dot" style="background:#854F0B"></div>IV (15–18)</div>
+    <div class="legend-item"><div class="dot" style="background:#A32D2D"></div>2SLS (19–20)</div>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div class="cols" id="qlist"></div>
+
+  <div class="footer">ECO6503 Principles of Econometrics · แบบฝึกหัดอัตนัย Chapter 6 · พิมพ์เพื่อทบทวนก่อนสอบ</div>
+</div>
+
+<script>
+const cats = [
+  {id:0, label:"Endogeneity",       cls:"c0", tag:"t0"},
+  {id:1, label:"Measurement Error", cls:"c1", tag:"t1"},
+  {id:2, label:"Consequences",      cls:"c2", tag:"t2"},
+  {id:3, label:"DAG & ID",          cls:"c3", tag:"t3"},
+  {id:4, label:"IV",                cls:"c4", tag:"t4"},
+  {id:5, label:"2SLS",              cls:"c5", tag:"t5"},
+];
+
+const qs = [
+  {cat:0, q:"Endogeneity คืออะไร และทำไมถึงทำให้ OLS ไม่น่าเชื่อถือ?",
+   a:"Endogeneity คือสถานการณ์ที่ X สัมพันธ์กับ error term u (<code>Cov(X,u)≠0</code>) ทำให้ OLS แยกไม่ออกว่า Y เปลี่ยนเพราะ X จริงหรือปัจจัยแฝง → β̂ เบี่ยงอย่างเป็นระบบ"},
+
+  {cat:0, q:"นักวิจัยมักเผชิญ endogeneity จากสาเหตุหลักอะไรบ้าง? ยกมา 3 ประเภท",
+   a:"(1) <strong>Omitted Variable Bias</strong> — ปัจจัยแฝงมีผลทั้ง X และ Y (2) <strong>Simultaneity</strong> — X และ Y กำหนดซึ่งกันและกัน (3) <strong>Measurement Error</strong> — X ถูกวัดผิด"},
+
+  {cat:0, q:"เหตุใดการเพิ่มขนาดตัวอย่างจึงไม่สามารถแก้ปัญหา endogeneity ได้?",
+   a:"เพราะเป็น <strong>systematic bias</strong> ไม่ใช่ random noise — <code>plim(β̂)≠β</code> เมื่อ n→∞ OLS ยังลู่เข้าค่าที่ผิดเหมือนเดิม เปรียบเหมือนวัดซ้ำด้วยไม้บรรทัดคด"},
+
+  {cat:0, q:"Sample selection bias เกิดขึ้นได้อย่างไร? ให้ตัวอย่างจากสมการค่าจ้าง",
+   a:"เกิดเมื่อตัวอย่างถูก<strong>คัดเลือกอย่างไม่สุ่ม</strong>สัมพันธ์กับผลลัพธ์ — เช่น เห็นข้อมูลเฉพาะ<strong>คนที่มีงานทำ</strong> คนไม่มีงานหายไป → ค่าประมาณสะท้อนแค่กลุ่มที่ถูกคัดเลือก"},
+
+  {cat:1, q:"Classical measurement error แตกต่างจาก non-classical measurement error อย่างไร?",
+   a:"<strong>Classical</strong>: <code>e⊥X_true, e⊥u</code> → bias หดเข้าหาศูนย์เสมอ (attenuation bias)<br><strong>Non-Classical</strong>: e สัมพันธ์กับ X_true หรือ u → ทิศทาง bias ไม่แน่นอน"},
+
+  {cat:1, q:"อธิบาย 'attenuation bias' คืออะไร และเกิดขึ้นเมื่อใด?",
+   a:"Attenuation bias คือ β̂ <strong>ถูกดึงเข้าหาศูนย์</strong> ภายใต้ classical ME — <code>E[β̂]=β·Var(X_true)/[Var(X_true)+Var(e)]&lt;|β|</code> ยิ่ง Var(e) สูง bias ยิ่งรุนแรง"},
+
+  {cat:1, q:"ถ้าผู้มีรายได้สูงมักรายงานรายได้ต่ำกว่าจริง ปัญหานี้จัดเป็น measurement error แบบใด?",
+   a:"เป็น <strong>Non-Classical</strong> เพราะ <code>Cov(e,X_true)≠0</code> (คนรวยรายงานต่ำกว่า) ละเมิดข้อสมมติ Classical → ทิศทาง bias ไม่แน่นอน"},
+
+  {cat:2, q:"Endogeneity อาจทำให้เครื่องหมาย (sign) ของสัมประสิทธิ์ผิดได้อย่างไร?",
+   a:"เมื่อ bias term <code>Cov(X,u)/Var(X)</code> ตรงข้ามกับ β และใหญ่พอ — เช่น <strong>งบสาธารณสุข→อัตราการตาย</strong>: β_true&lt;0 แต่พื้นที่โรคมากได้งบมาก → OLS ได้ β̂&gt;0"},
+
+  {cat:2, q:"เหตุใดการมีข้อมูล Big Data จำนวนมากจึงไม่ใช่ทางออกของปัญหา endogeneity?",
+   a:"Big Data ลด <strong>variance</strong> (SE แคบ) แต่ไม่ลด <strong>bias</strong> — OLS ยังลู่เข้าค่าที่ผิดอย่างแม่นยำขึ้น (precisely wrong) ปัญหาอยู่ที่โครงสร้างเชิงเหตุ"},
+
+  {cat:2, q:"ยกตัวอย่างที่ endogeneity ทำให้การตีความเชิงนโยบายผิดพลาดอย่างร้ายแรง",
+   a:"<strong>ประกันสุขภาพ→สุขภาพ</strong>: คนสุขภาพไม่ดีซื้อประกันมากกว่า → OLS สรุป 'ประกันทำให้สุขภาพแย่' (β̂&lt;0) ทั้งที่ causal effect จริงเป็นบวก"},
+
+  {cat:3, q:"DAG (Directed Acyclic Graph) ช่วยในการวิเคราะห์ econometric อย่างไร?",
+   a:"DAG ช่วยมองเห็น<strong>โครงสร้างเชิงเหตุและผล</strong> — ระบุว่า bias มาจากเส้นทางใด ต้องควบคุมตัวแปรใด และตัวแปรใดเป็น collider ที่ห้ามควบคุม"},
+
+  {cat:3, q:"Back-door criterion คืออะไร และต้องทำตามเงื่อนไขใดจึงจะ OLS ให้ผล unbiased?",
+   a:"คือการหาชุดตัวแปร Z ที่<strong>ปิดทุก back-door path</strong> จาก X ไป Y โดย Z ต้องไม่ใช่ descendant ของ X — ปิดครบ → <code>Cov(X,u|Z)=0</code> → OLS ไม่มี bias"},
+
+  {cat:3, q:"Collider bias คืออะไร? เหตุใดการควบคุมตัวแปร collider จึงอันตราย?",
+   a:"Collider คือตัวแปร C ที่ลูกศรสองเส้นวิ่งเข้าหา (X→C←W) — ควบคุม C จะ<strong>เปิดเส้นทางเทียม</strong> X↔W→Y ทำให้เกิด Cov(X,u)≠0 ขึ้นใหม่"},
+
+  {cat:3, q:"Front-door criterion ใช้ได้เมื่อใด และมีหลักการอย่างไร?",
+   a:"ใช้เมื่อ confounder สังเกตไม่ได้ แต่มี<strong>mediator M สังเกตได้</strong>: X→M→Y — ประมาณ 2 ขั้น: X→M และ M→Y แล้วคูณกัน: Causal Effect = α₁×β₁"},
+
+  {cat:4, q:"ตัวแปรเครื่องมือ (IV) ที่ดีต้องมีเงื่อนไขสำคัญ 3 ข้อ ระบุและอธิบายแต่ละข้อ",
+   a:"(1) <strong>Relevance</strong>: <code>Cov(Z,X)≠0</code> Z ต้องขยับ X ได้ F-stat&gt;10 (2) <strong>Exogeneity</strong>: <code>Cov(Z,u)=0</code> Z ไม่สัมพันธ์กับปัจจัยแฝง (3) <strong>Exclusion</strong>: Z→Y ผ่าน X เท่านั้น"},
+
+  {cat:4, q:"เหตุใด 'ระยะทางถึงมหาวิทยาลัย' จึงถูกใช้เป็น IV สำหรับการศึกษา? เงื่อนไขใดที่น่าเป็นห่วงที่สุด?",
+   a:"Relevance: คนใกล้ ม. เรียนสูงกว่า; Exclusion: ระยะทางส่งผลค่าจ้างผ่านการศึกษาเท่านั้น — น่าเป็นห่วงที่สุดคือ<strong>Exogeneity</strong> เพราะพื้นที่ใกล้ ม. อาจมีงานและ background ดีกว่า"},
+
+  {cat:4, q:"'Weak instrument' คืออะไร และส่งผลเสียอะไรต่อการประมาณค่า IV?",
+   a:"Weak instrument คือ Z ที่มีผลต่อ X น้อย (F-stat&lt;10) → IV มี<strong>variance สูง</strong> (SE พุ่ง) และใน finite sample เกิด<strong>bias เข้าหา OLS</strong>"},
+
+  {cat:4, q:"เหตุใด 'การศึกษาของพ่อแม่' จึงไม่ควรใช้เป็น IV สำหรับการศึกษาของลูก?",
+   a:"เพราะการศึกษาพ่อแม่สัมพันธ์กับ<strong>ability และ family background</strong> ของลูกซึ่งอยู่ใน u → ละเมิด Exogeneity (<code>Cov(Z,u)≠0</code>) → IV ยังมี bias"},
+
+  {cat:5, q:"อธิบาย 2 ขั้นตอนของ 2SLS และทำไมถึงได้ผลดีกว่า OLS เมื่อ X เป็น endogenous",
+   a:"<strong>Stage 1</strong>: ถดถอย X บน Z → ได้ X̂ (ส่วนสะอาด) <strong>Stage 2</strong>: ถดถอย Y บน X̂ → <code>Cov(X̂,u)=0</code> เพราะ X̂ มาจาก Z ที่ไม่สัมพันธ์กับ u"},
+
+  {cat:5, q:"IV แตกต่างจาก 2SLS อย่างไร และเมื่อใดทั้งสองวิธีให้ผลเหมือนกัน?",
+   a:"<strong>IV</strong> = concept/identification, สูตร: <code>Cov(Z,Y)/Cov(Z,X)</code>; <strong>2SLS</strong> = estimation method — เหมือนกันเมื่อ 1 endogenous + 1 instrument + ไม่มี controls; หลาย Z ต้องใช้ 2SLS เท่านั้น"},
+];
+
+const el = document.getElementById('qlist');
+qs.forEach((q, i) => {
+  const c = cats[q.cat];
+  const card = document.createElement('div');
+  card.className = `qcard cat${q.cat}`;
+  card.innerHTML = `
+    <div class="qhead">
+      <div class="qnum ${c.cls}">${i+1}</div>
+      <div class="qtxt">${q.q}</div>
+      <span class="qtag ${c.tag}">${c.label}</span>
+    </div>
+    <div class="qans">
+      <div class="ans-lbl">เฉลย</div>
+      <div class="ans-txt">${q.a}</div>
+    </div>`;
+  el.appendChild(card);
+});
+</script>
+</body>
+</html>
