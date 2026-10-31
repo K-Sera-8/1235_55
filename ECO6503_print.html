@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECO6503 แบบฝึกหัด 20 ข้อ พร้อมเฉลย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== SCREEN STYLES ===== */
+:root{
+  --purple:#3D35A0;--purple-bg:#EDEAFD;
+  --coral:#C03028;--coral-bg:#FDECEA;
+  --amber:#9A5C00;--amber-bg:#FEF0D0;
+  --blue:#0E5A9A;--blue-bg:#E0EEFB;
+  --teal:#0F6B58;--teal-bg:#D8F8F0;
+  --green:#1E5E38;--green-bg:#D8F2E4;
+  --text:#111;--sub:#444;--border:#D4D0C8;--bg:#F5F4F0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* Screen only: nice header */
+body{font-family:'Sarabun','Tahoma','Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.55}
+.screen-header{background:linear-gradient(135deg,#1A1A2E 0%,#2C2870 60%,#3D3A90 100%);color:#fff;padding:24px 32px;margin-bottom:24px}
+.screen-header h1{font-size:22px;font-weight:700;line-height:1.3}
+.screen-header h1 span{color:#ADA8FF}
+.screen-header p{font-size:13px;color:rgba(255,255,255,.65);margin-top:6px}
+.screen-body{max-width:860px;margin:0 auto;padding:0 24px 40px}
+.print-btn{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;padding:9px 20px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'Sarabun',sans-serif;cursor:pointer;transition:opacity .15s}
+.print-btn:hover{opacity:.85}
+
+/* ===== PRINT CONTAINER ===== */
+.doc{background:#fff;padding:16mm 14mm;max-width:860px;margin:0 auto;box-shadow:0 2px 20px rgba(0,0,0,0.10);border-radius:4px}
+
+/* ===== DOC HEADER ===== */
+.doc-head{border-bottom:2px solid var(--purple);padding-bottom:8px;margin-bottom:10px}
+.doc-head-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:6px}
+.doc-title{font-size:16px;font-weight:700;color:var(--purple);line-height:1.3}
+.doc-sub{font-size:10px;color:var(--sub);margin-top:2px}
+.doc-meta{font-size:9.5px;color:var(--sub);text-align:right;line-height:1.7}
+.doc-note{background:var(--purple-bg);border-radius:5px;padding:5px 10px;margin-top:7px;font-size:9.5px;color:var(--purple);display:flex;gap:20px;flex-wrap:wrap}
+
+/* ===== SECTION LABEL ===== */
+.sec-label{font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin:10px 0 6px;display:inline-block}
+.sec-label.s1{background:var(--purple-bg);color:var(--purple)}
+.sec-label.s2{background:var(--coral-bg);color:var(--coral)}
+.sec-label.s3{background:var(--amber-bg);color:var(--amber)}
+.sec-label.s4{background:var(--green-bg);color:var(--green)}
+
+/* ===== TWO-COLUMN LAYOUT ===== */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}
+.col-span{grid-column:1/-1}
+
+/* ===== QUESTION BLOCK ===== */
+.qb{background:#fff;border:1px solid var(--border);border-radius:6px;padding:8px 10px;break-inside:avoid}
+.qb.s1{border-top:3px solid var(--purple)}
+.qb.s2{border-top:3px solid var(--coral)}
+.qb.s3{border-top:3px solid var(--amber)}
+.qb.s4{border-top:3px solid var(--green)}
+
+.q-row{display:flex;gap:7px;align-items:flex-start;margin-bottom:5px}
+.qn{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
+.s1 .qn{background:var(--purple)}
+.s2 .qn{background:var(--coral)}
+.s3 .qn{background:var(--amber)}
+.s4 .qn{background:var(--green)}
+.qtxt{font-size:10.5px;line-height:1.55;color:#111;font-weight:600;flex:1}
+.fi{font-family:'Fira Code','Consolas','Courier New',monospace;font-size:9px;background:#F0EEF8;padding:1px 5px;border-radius:3px;color:var(--purple)}
+
+/* ===== ANSWER ===== */
+.adiv{border-top:1px dashed var(--border);margin-top:5px;padding-top:5px}
+.alabel{font-size:8.5px;font-weight:700;letter-spacing:.3px;color:var(--sub);margin-bottom:3px;text-transform:uppercase}
+.atxt{font-size:10px;line-height:1.6;color:#222}
+.atxt strong{color:var(--purple);font-weight:700}
+.atxt.s2 strong{color:var(--coral)}
+.atxt.s3 strong{color:var(--amber)}
+.atxt.s4 strong{color:var(--green)}
+
+.fblock{background:#1A1A2E;color:#E8E6FF;font-family:'Fira Code','Consolas','Courier New',monospace;font-size:8.5px;padding:6px 9px;border-radius:4px;margin:4px 0;line-height:1.8}
+.fblock .kw{color:#ADA8FF}
+.fblock .num{color:#7CFC96}
+.fblock .op{color:#FFB86C}
+.fblock .cm{color:#5A587A}
+
+.insight{font-size:9.5px;padding:4px 8px;border-radius:4px;margin-top:4px;line-height:1.5}
+.i-p{background:var(--purple-bg);color:var(--purple)}
+.i-c{background:var(--coral-bg);color:var(--coral)}
+.i-a{background:var(--amber-bg);color:var(--amber)}
+.i-t{background:var(--teal-bg);color:var(--teal)}
+.i-g{background:var(--green-bg);color:var(--green)}
+
+/* ===== FOOTER ===== */
+.doc-footer{text-align:center;font-size:8.5px;color:var(--sub);border-top:1px solid var(--border);margin-top:12px;padding-top:7px}
+
+/* ===== PRINT MEDIA ===== */
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  body{background:#fff;font-size:10px}
+  .screen-header,.print-btn,.no-print{display:none!important}
+  .screen-body{padding:0;max-width:none}
+  .doc{box-shadow:none;padding:8mm 10mm;max-width:none;border-radius:0;margin:0}
+  .qb{break-inside:avoid;page-break-inside:avoid}
+  .sec-label{page-break-after:avoid}
+  @page{size:A4;margin:8mm 10mm}
+}
+</style>
+</head>
+<body>
+
+<!-- SCREEN HEADER (ไม่ปรากฏเมื่อพิมพ์) -->
+<div class="screen-header no-print">
+  <h1>ECO6503 · แบบฝึกหัด 20 ข้อ พร้อมเฉลย<br><span>Endogeneity &amp; Instrumental Variables</span></h1>
+  <p>ระดับปริญญาโท · ออกแบบสำหรับพิมพ์ A4 · ฟอนต์ภาษาไทย Sarabun</p>
+</div>
+
+<div class="screen-body">
+  <button class="print-btn no-print" onclick="window.print()">🖨️ พิมพ์ / บันทึก PDF</button>
+
+  <!-- ===== PRINTABLE DOCUMENT ===== -->
+  <div class="doc">
+
+    <!-- DOC HEADER -->
+    <div class="doc-head">
+      <div class="doc-head-top">
+        <div>
+          <div class="doc-title">แบบฝึกหัดอัตนัย 20 ข้อ พร้อมเฉลย — ECO6503 Ch.6</div>
+          <div class="doc-sub">Endogeneity &amp; Instrumental Variables (IV/2SLS)</div>
+        </div>
+        <div class="doc-meta">
+          Wonlope Khumpradith<br>
+          คณะเศรษฐศาสตร์ มหาวิทยาลัยรามคำแหง<br>
+          ระดับปริญญาโท · ECO6503
+        </div>
+      </div>
+      <div class="doc-note">
+        <span>📌 ข้อ 1–5: Endogeneity พื้นฐาน</span>
+        <span>📐 ข้อ 6–10: Omitted Variable Bias</span>
+        <span>🔄 ข้อ 11–17: Simultaneity / ME / Selection</span>
+        <span>🛠 ข้อ 18–20: Application &amp; IV</span>
+      </div>
+    </div>
+
+    <!-- =================== SECTION 1 =================== -->
+    <div class="sec-label s1">Section 1 — Endogeneity: แนวคิดพื้นฐาน (ข้อ 1–5)</div>
+    <div class="grid">
+
+      <!-- Q1 -->
+      <div class="qb s1">
+        <div class="q-row"><div class="qn">1</div><div class="qtxt">ภาวะตัวแปรภายใน (Endogeneity) คืออะไร และเงื่อนไขทางคณิตศาสตร์ที่แสดงว่าเกิดปัญหานี้คืออะไร?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">Endogeneity คือสถานการณ์ที่ตัวแปรอิสระ X <strong>สัมพันธ์กับ error term u</strong> ทำให้ OLS แยกผลของ X ต่อ Y ไม่ได้อย่างบริสุทธิ์ เงื่อนไขคือ <strong>Cov(X,u) ≠ 0</strong> หรือเทียบเท่า E(u|X) ≠ 0 ซึ่งละเมิด exogeneity assumption ของ OLS</div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="qb s1">
+        <div class="q-row"><div class="qn">2</div><div class="qtxt">OLS มีทั้ง Bias และ Inconsistency เมื่อเกิด Endogeneity — ทั้งสองคำนี้ต่างกันอย่างไร?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt"><strong>Bias</strong> = E[β̂] ≠ β ในตัวอย่างใดๆ; <strong>Inconsistency</strong> = แม้ n→∞ ก็ยังไม่ลู่เข้าหาค่าจริง (plim β̂ ≠ β) เพราะ Cov(X,u) ≠ 0 เป็นระบบ ไม่ใช่ noise — ข้อมูลมากขึ้นไม่ช่วย!</div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="qb s1">
+        <div class="q-row"><div class="qn">3</div><div class="qtxt">จากสูตร <span class="fi">plim β̂₁ = β₁ + Cov(X,u)/Var(X)</span> พจน์ที่สองหมายความว่าอะไร?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt"><strong>Cov(X,u)/Var(X)</strong> คือ "ส่วนเกิน" ที่ OLS รวมเข้ากับ β̂₁ โดยไม่รู้ตัว เกิดจาก X เคลื่อนไหวพร้อมกับปัจจัยแฝงใน u ทำให้ OLS เข้าใจผิดว่าผลต่อ Y มาจาก X ทั้งหมด (Var(X) อยู่ตัวหาร → ถ้า X แปรผันมาก bias เล็กลง แต่ไม่หายไป)</div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="qb s1">
+        <div class="q-row"><div class="qn">4</div><div class="qtxt">Exogeneity Assumption E(u|X)=0 หมายความว่าอะไรในเชิงเศรษฐศาสตร์ และเหตุใดจึงสำคัญ?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">E(u|X)=0 หมายความว่าเมื่อกำหนด X แล้ว ไม่มีรูปแบบเป็นระบบของปัจจัยแฝงใน u ที่สัมพันธ์กับ X — X ไม่ "ปนเปื้อน" ปัจจัยอื่น ถ้าละเมิด <strong>β̂₁ สะท้อนทั้งผลของ X และปัจจัยแฝงพร้อมกัน</strong> ตีความเป็น causal effect ไม่ได้</div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="qb s1 col-span">
+        <div class="q-row"><div class="qn">5</div><div class="qtxt">มี 4 แหล่งหลักที่ทำให้เกิด Endogeneity จงระบุและให้ตัวอย่างเศรษฐศาสตร์สั้นๆ ของแต่ละแหล่ง</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">(1) <strong>OVB</strong> — ละ Ability ออกจากสมการค่าจ้าง; (2) <strong>Simultaneity</strong> — P↔Q กำหนดกันในตลาด; (3) <strong>Measurement Error</strong> — ผู้ตอบจำปีการศึกษาผิด; (4) <strong>Sample Selection / Endogenous Assignment</strong> — เห็นค่าจ้างเฉพาะคนมีงานทำ หรือทุนให้คนเก่ง (ทั้งหมดนำไปสู่ Cov(X,u) ≠ 0)</div>
+        </div>
+      </div>
+
+    </div><!-- end grid s1 -->
+
+    <!-- =================== SECTION 2 =================== -->
+    <div class="sec-label s2">Section 2 — Omitted Variable Bias (ข้อ 6–10)</div>
+    <div class="grid">
+
+      <!-- Q6 -->
+      <div class="qb s2">
+        <div class="q-row"><div class="qn">6</div><div class="qtxt">สูตร OVB คือ <span class="fi">Bias = β₂·Cov(X,Z)/Var(X)</span> เงื่อนไขใดทำให้ Bias=0?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">Bias=0 เมื่อ <strong>β₂=0</strong> (Z ไม่มีผลต่อ Y) หรือ <strong>Cov(X,Z)=0</strong> (X ไม่สัมพันธ์กับ Z) ต้องละเมิดทั้ง 2 เงื่อนไขพร้อมกันจึงเรียกว่า OVB — ถ้าลืมใส่ตัวแปรที่ไม่สัมพันธ์กับ X เลย ไม่เป็น OVB แค่ R² ต่ำกว่าที่ควร</div>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="qb s2">
+        <div class="q-row"><div class="qn">7</div><div class="qtxt">True model: <span class="fi">Income = 20,000 + 2,000·Educ + 10,000·Ability</span> และ <span class="fi">Ability = 0.2·Educ + v</span> OLS ไม่ใส่ Ability จะได้ coefficient ของ Education เท่าใด?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">Bias = β₂×δ₁ = 10,000×0.2 = <strong>2,000</strong> → OLS ได้ α̂₁ = 2,000+2,000 = <strong>4,000 บาท/ปี</strong> (สูงเกินจริง 100%) เพราะ Ability ที่มีผลต่อรายได้ถูกรวมอยู่ใน error term</div>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="qb s2">
+        <div class="q-row"><div class="qn">8</div><div class="qtxt">ถ้าละ "ความอุตสาหะ" ออกจากสมการค่าจ้าง OLS จะประมาณผลของการศึกษาสูงหรือต่ำเกินจริง? เพราะเหตุใด?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt"><strong>สูงเกินจริง (Upward Bias)</strong> เพราะ β₂&gt;0 (ความขยันเพิ่มค่าจ้าง) และ Cov(Educ, Diligence)&gt;0 (คนขยันมักเรียนสูง) → sign(Bias)=(+)×(+)=<strong>บวก</strong> OLS นับผลของความขยันเข้าไปในสัมประสิทธิ์การศึกษา</div>
+        </div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="qb s2">
+        <div class="q-row"><div class="qn">9</div><div class="qtxt">จงพิสูจน์ว่า <span class="fi">Cov(X,Y) = β₁Var(X) + β₂Cov(X,Z)</span> จาก True Model: Y = β₀ + β₁X + β₂Z + u</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="fblock">
+Cov(X,Y) = Cov(X, β₀+<span class="num">β₁</span>X+<span class="num">β₂</span>Z+u)
+<span class="cm">linearity of Cov:</span>
+= Cov(X,β₀) + <span class="num">β₁</span>Cov(X,X) + <span class="num">β₂</span>Cov(X,Z) + Cov(X,u)
+<span class="cm">Cov(X,β₀)=0; Cov(X,u)=0 (exogeneity in true model)</span>
+<span class="op">= β₁Var(X) + β₂Cov(X,Z) ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="qb s2">
+        <div class="q-row"><div class="qn">10</div><div class="qtxt">ให้ Corr(X,Z)=0.30, SD_X=3, SD_Z=1, β₂=0.20, Var(X)=9, β₁=0.08 จงคำนวณ Bias และ α̂₁ ที่ OLS ประมาณได้</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="fblock">
+Cov(X,Z) = <span class="num">0.30</span>×<span class="num">3</span>×<span class="num">1</span> = <span class="num">0.90</span>
+Bias = <span class="num">0.20</span>×<span class="num">0.90</span>/<span class="num">9</span> = <span class="op">0.020</span>
+E[α̂₁] = <span class="num">0.08</span>+<span class="op">0.020</span> = <span class="op">0.10</span> <span class="cm">(สูงเกินจริง 25%)</span>
+          </div>
+          <div class="atxt s2">OLS บอกว่าเรียนเพิ่ม 1 ปี ค่าจ้างเพิ่ม 10% ทั้งที่ผลจริงแค่ 8% — ส่วน 2% มาจาก Ability</div>
+        </div>
+      </div>
+
+    </div><!-- end grid s2 -->
+
+    <!-- =================== SECTION 3 =================== -->
+    <div class="sec-label s3">Section 3 — Simultaneity / Measurement Error / Sample Selection (ข้อ 11–17)</div>
+    <div class="grid">
+
+      <!-- Q11 -->
+      <div class="qb s3">
+        <div class="q-row"><div class="qn">11</div><div class="qtxt">ในระบบ Q_d = α₀−α₁P+u_d, Q_s = β₀+β₁P+u_s จงพิสูจน์ว่า <span class="fi">Cov(P*,u_d) ≠ 0</span></div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="fblock">
+<span class="cm">จาก Qd=Qs:</span>
+P* = (α₀−β₀)/(α₁+β₁) + <span class="num">u_d</span>/(α₁+β₁) − u_s/(α₁+β₁)
+Cov(P*,u_d) = Var(u_d)/(α₁+β₁) <span class="op">≠ 0</span>
+<span class="cm">P* มี u_d เป็นส่วนประกอบ → ไม่ใช่ exogenous</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q12 -->
+      <div class="qb s3">
+        <div class="q-row"><div class="qn">12</div><div class="qtxt">Q_d=100−2P+u_d, Q_s=20+3P+u_s: หา (P*,Q*) ที่ baseline, demand shock u_d=+20, supply shock u_s=+20 และ OLS จะผิดพลาดอย่างไร?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="fblock">
+Baseline: P*=<span class="num">16</span>, Q*=<span class="num">68</span>
+u_d=+20: P=<span class="op">20</span>, Q=<span class="op">80</span> <span class="cm">(ราคา↑ปริมาณ↑)</span>
+u_s=+20: P=<span class="op">12</span>, Q=<span class="op">76</span> <span class="cm">(ราคา↓ปริมาณ↑)</span>
+          </div>
+          <div class="atxt s3">OLS ปะปนทั้งสองกรณี → slope อยู่ระหว่าง −2 กับ +3 ไม่ใช่ structural slope ของฝ่ายใดเลย</div>
+        </div>
+      </div>
+
+      <!-- Q13 -->
+      <div class="qb s3">
+        <div class="q-row"><div class="qn">13</div><div class="qtxt">Simultaneity Bias เป็น "Systematic" ไม่ใช่ Random — จงอธิบายว่าทำไมมันทำให้ OLS Inconsistent ไม่ใช่แค่ Biased</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">"Systematic" = Cov(X,u) ≠ 0 เกิดจากโครงสร้างของแบบจำลอง ไม่ใช่ random sampling — ทุกครั้งที่สุ่มตัวอย่างใหม่ X ก็ยังสัมพันธ์กับ u เสมอ ดังนั้น <strong>แม้ n→∞ ค่าเฉลี่ยของ Cov(X,u) ก็ไม่ลู่เข้าศูนย์ → plim β̂ ≠ β</strong> คือ Inconsistent</div>
+        </div>
+      </div>
+
+      <!-- Q14 -->
+      <div class="qb s3">
+        <div class="q-row"><div class="qn">14</div><div class="qtxt">จงอธิบายกลไกที่ Measurement Error ทำให้ Cov(X_obs, u*) ≠ 0 โดยเริ่มจาก X_obs = X_true + e</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="fblock">
+Y = β₁X_true+u = β₁(X_obs−e)+u = β₁X_obs + (u−β₁e)
+                                          ↑ u* composite error
+Cov(X_obs,u*) = −β₁Var(e) <span class="op">≠ 0</span>
+<span class="cm">X_obs มี e → e อยู่ใน u* ด้วย → สัมพันธ์กัน</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q15 -->
+      <div class="qb s3">
+        <div class="q-row"><div class="qn">15</div><div class="qtxt">Attenuation Bias คืออะไร? สูตร <span class="fi">E[β̂₁] = β₁·Var(X_true)/[Var(X_true)+Var(e)]</span> แสดงให้เห็นอะไร?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">Attenuation Bias = β̂₁ ถูก "ดึง" เข้าหาศูนย์เสมอ (ใน Classical ME) เพราะ noise (e) เพิ่ม Var(X_obs) ใน denominator แต่ Cov(X_obs,Y) ยังขึ้นกับ X_true อย่างเดียว → <strong>Shrinkage Factor λ = Var(X_true)/[Var(X_true)+Var(e)] &lt; 1</strong> ยิ่ง Var(e) มาก ยิ่ง bias รุนแรง</div>
+        </div>
+      </div>
+
+      <!-- Q16 -->
+      <div class="qb s3">
+        <div class="q-row"><div class="qn">16</div><div class="qtxt">Sample Selection Bias ต่างจาก OVB อย่างไร? ให้ตัวอย่างที่สองปัญหาเกิดพร้อมกันในงานวิจัยเดียว</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt"><strong>OVB</strong> = ตัวแปร Z ขาดจากสมการ แต่ข้อมูลครบทุกคน; <strong>Sample Selection</strong> = ข้อมูลบางกลุ่มหายไปจากตัวอย่างอย่างไม่สุ่ม — ตัวอย่างที่เกิดพร้อมกัน: ศึกษาผลการฝึกอบรม (X) ต่อผลิตภาพ โดยเห็นเฉพาะคนที่ยังทำงานอยู่ (Selection) และไม่ควบคุม Motivation (OVB)</div>
+        </div>
+      </div>
+
+      <!-- Q17 -->
+      <div class="qb s3">
+        <div class="q-row"><div class="qn">17</div><div class="qtxt">Survivorship Bias คืออะไร? จงให้ตัวอย่างในบริบทการเงิน และอธิบายว่ามันทำให้ผลประมาณเบี่ยงเบนอย่างไร</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">Survivorship Bias = เห็นเฉพาะ "ผู้รอดชีวิต" ไม่เห็นผู้ล้มเหลว — ตัวอย่าง: ศึกษา performance กองทุนรวม เห็นเฉพาะกองทุนที่ยังอยู่รอด (ผลงานดีพอ) กองทุนที่ปิดตัวหายไป → ค่าเฉลี่ยผลตอบแทน <strong>สูงกว่าความจริง</strong> และ coefficient ของปัจจัยทำนาย performance ก็บิดเบือนตามไปด้วย</div>
+        </div>
+      </div>
+
+    </div><!-- end grid s3 -->
+
+    <!-- =================== SECTION 4 =================== -->
+    <div class="sec-label s4">Section 4 — Application &amp; Critical Thinking (ข้อ 18–20)</div>
+    <div class="grid">
+
+      <!-- Q18 -->
+      <div class="qb s4">
+        <div class="q-row"><div class="qn">18</div><div class="qtxt">นักวิจัยศึกษาผลของนโยบายลดดอกเบี้ย (X) ต่อการลงทุน (Y) แต่ธนาคารกลางมักลดดอกเบี้ยตอนเศรษฐกิจซบเซา — ปัญหา Endogeneity ประเภทใดเกิดขึ้น และ Cov(X,u) ≠ 0 เพราะอะไร?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt">เกิดทั้ง <strong>Simultaneity</strong> (นโยบายตอบสนองต่อ Y → X↔Y) และ <strong>Endogenous Policy Assignment</strong> (การลดดอกเบี้ยเกิดตอนเศรษฐกิจแย่ไม่ใช่สุ่ม) — Cov(X,u)≠0 เพราะภาวะเศรษฐกิจ (ใน u ถ้าไม่ควบคุม) ส่งผลทั้งต่อ X และ Y พร้อมกัน → OLS อาจสรุปผิดว่า "ลดดอกเบี้ยทำให้การลงทุนลดลง"</div>
+        </div>
+      </div>
+
+      <!-- Q19 -->
+      <div class="qb s4">
+        <div class="q-row"><div class="qn">19</div><div class="qtxt">Instrumental Variable ที่ดีต้องมี Relevance และ Exclusion Restriction — อธิบายทั้งสองข้อ และทำไม "ภาษีบุหรี่" จึงเป็น IV ที่ดีสำหรับผลการสูบบุหรี่ต่อสุขภาพ?</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt"><strong>Relevance:</strong> ภาษีสูงขึ้น → ราคาบุหรี่แพงขึ้น → คนสูบน้อยลง Cov(Z,X)≠0 (ทดสอบด้วย First-Stage F&gt;10); <strong>Exclusion Restriction:</strong> ภาษีบุหรี่ไม่มีผลต่อสุขภาพโดยตรง นอกจากผ่านการสูบ Cov(Z,u)=0 (ข้อสมมติที่ต้องใช้ economic reasoning พิสูจน์ ทดสอบตรงๆ ไม่ได้)</div>
+        </div>
+      </div>
+
+      <!-- Q20 -->
+      <div class="qb s4 col-span">
+        <div class="q-row"><div class="qn">20</div><div class="qtxt">เพื่อน ป.โท เสนอว่า "เราพบว่า Corr(X, ê) = 0 ในตัวอย่าง ดังนั้น OLS น่าจะ unbiased" — คุณเห็นด้วยหรือไม่? อธิบายข้อผิดพลาดในการใช้เหตุผลนี้</div></div>
+        <div class="adiv">
+          <div class="alabel">✅ เฉลย</div>
+          <div class="atxt"><strong>ไม่เห็นด้วย</strong> — Corr(X, ê) = 0 เสมอโดยโครงสร้างทางคณิตศาสตร์ของ OLS (First-Order Condition กำหนดให้ Σ(Xᵢêᵢ)=0) จึงไม่มีข้อมูลใดเลยเกี่ยวกับ endogeneity — ê คือ residual ไม่ใช่ u ที่แท้จริง การทดสอบ Endogeneity ต้องใช้ <strong>Hausman Test</strong> หรือ <strong>First-Stage F-statistic</strong></div>
+          <div class="insight i-p">💡 ประโยคสำคัญ: OLS บังคับให้ Cov(X,ê)=0 เสมอ — ดังนั้น residual ≠ true error term และห้ามนำมาอ้างว่าไม่มี Endogeneity โดยเด็ดขาด</div>
+        </div>
+      </div>
+
+    </div><!-- end grid s4 -->
+
+    <!-- DOC FOOTER -->
+    <div class="doc-footer">
+      ECO6503 Principles of Econometrics · Chapter 6: Endogeneity &amp; IV/2SLS · Wonlope Khumpradith · คณะเศรษฐศาสตร์ มหาวิทยาลัยรามคำแหง
+    </div>
+
+  </div><!-- end .doc -->
+</div><!-- end .screen-body -->
+
+</body>
+</html>
